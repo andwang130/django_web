@@ -1,0 +1,43 @@
+﻿
+{% extends "my_admin/templat.html" %}
+{% load staticfiles %}
+{% block mian %}
+  <article>
+    <h2 class="about_h">您现在的位置是：<a href="/">首页</a>><a href="1/">模板分享</a>><a href="1/">个人博客模板</a></h2>
+    <div class="index_about">
+      <h2 class="c_titile">{{ Atrcont.title }}</h2>
+      <p class="box_c"><span class="d_time">发布时间：{{ Atrcont.datime }}</span><span>编辑：{{ Atrcont.author }}</span><span>浏览（{{ Atrcont.numcilck }}）</span><span>评论览（14）</span></p>
+      <ul class="infos" id="pre">
+<html>
+{% autoescape off %}
+{{Atrcont.conten}}
+{% endautoescape %}
+
+</html>
+      </ul>
+      <div class="nextinfo">
+        <p>上一篇：<a href="/new/{{ atr_up.artid }}">{{ atr_up.title }}</a></p>
+        <p>下一篇：<a href="/new/{{ atr_down.artid }}">{{ atr_down.title }}</a></p>
+      </div>
+      <div class="otherlink">
+        <h2>相关文章</h2>
+        <ul>
+          {% for fod in Rele_atr %}
+          <li><a href="/new/{{ fod.artid}}" title="{{ fod.title }}">{{ fod.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </article>
+  <aside>
+<img src="{% static 'images/1a6275a6-9520-48cc-bf6f-26b869c1036c.jpg'%}" style="width: 270px">
+  </aside>
+<script>
+window.onload=function(){
+    con={{Atrcont.conten}}
+    document.getElementById('pre').innerHTML=con
+}
+</script>
+  <!-- 清除浮动 --> 
+
+{% endblock %}

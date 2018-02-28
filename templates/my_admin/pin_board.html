@@ -1,0 +1,69 @@
+{% extends 'my_admin/admin_temp.html' %}
+{% block mian %}
+<body class="gray-bg">
+    <div class="row">
+
+        <div class="col-sm-12"><button class="btn btn-success  dim"  id="add_but" data-toggle="modal" data-target="#myModa" type="button"><i class="fa fa-upload"></i>
+                    </button>
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <ul class="notes">
+                    {% for i in Label %}
+                    <li>
+                        <div>
+                            <small>{{ i.settime }}</small>
+                            <h4>{{ i.title }}</h4>
+                            <p>{{ i.conten }}</p>
+                            <a href="/my_admin/delete_pin_board?id={{ i.LabelID }}"><i class="fa fa-trash-o "></i></a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="modal fade " id="myModa" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" style="width: 400px ">
+                                    <div class="modal-content animated flipInY">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">添加标签</h4>
+{#                                            <small class="font-bold">这里可以显示副标题。</small>#}
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" id="form1"  action="/my_admin/pin_boadrd" >
+                                                {% csrf_token %}
+                                                  <div>
+                                                标题：<input type="text" maxlength="25" name="title"></li>
+                                                 </div>
+                                                      <div>
+                                  内容： <textarea id="ccomment" name="comment" maxLength="100" class="form-control help-block m-b-none" required="" aria-required="true" aria-invalid="false" aria-describedby="ccomment-error"></textarea>
+                                <span id="ccomment-error" class="help-block m-b-none" ></span>
+                                                      </div>
+                                                  <div>
+                                                <button type="submit">提交</button>
+                                                  </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="colesform" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+    </div>
+
+    <!-- 全局js -->
+
+
+
+    <!-- 自定义js -->
+
+
+    
+    
+
+</body>
+
+</html>
+{% endblock %}

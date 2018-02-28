@@ -1,0 +1,182 @@
+{% extends 'my_admin/admin_temp.html' %}
+{% load staticfiles %}
+{% block head %}
+    <link href="{% static 'css/plugins/dropzone/basic.css' %}" rel="stylesheet">
+    <link href="{%  static 'css/plugins/dropzone/dropzone.css' %}" rel="stylesheet">
+{% endblock %}
+{% block mian %}
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="file-manager">
+                            <h5>显示：</h5>
+                            <a href="/my_admin/file_manager" class="file-control active">所有</a>
+                            <a href="file_manager.html#" class="file-control">文档</a>
+                            <a href="file_manager.html#" class="file-control">视频</a>
+                            <a href="file_manager.html#" class="file-control">图片</a>
+                            <div class="hr-line-dashed"></div>
+                            <button class="btn btn-primary btn-block"  data-toggle="modal" data-target="#myModa">上传文件</button>
+                                     <div class="modal fade" id="myModa" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content animated flipInY">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">文件上传</h4>
+{#                                            <small class="font-bold">这里可以显示副标题。</small>#}
+                                        </div>
+                                        <div class="modal-body">
+                                                   <form id="my-awesome-dropzone" id="my-awesome-dropzone" class="dropzone" action="/my_admin/admin_upfile">
+                                                       <div ><i class="fa fa-file">选择一个文件夹</i>  <select  style="height: 30px"name="Folder">
+                                            {% for Folder in Folder_list %}
+                                           <i class="fa fa-file"></i> <option>
+                                               {{ Folder }}
+                                            </option>
+                                            {% endfor %}
+                                        </select></div>
+
+                                                       {% csrf_token %}
+                            <div class="dropzone-previews"></div>
+                            <button type="submit" class="btn btn-primary pull-right">提交</button>
+                        </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="colesform" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <h5>文件夹</h5>
+                        <span><i class="glyphicon glyphicon-edit"><a id="upFolder" >添加文件夹 </a><form  method="get" action="/my_admin/add_Folder"><input hidden id="inFolder" name="inFolder"> <button type="submit" id="buFolder" hidden>确定</button></form></i>
+                            <br>
+                            <i class="fa fa-sticky-note"><a id="show_dele">显示删除按钮</a></i>
+                        </span>
+
+                            <ul  class="folder-list" style="padding: 0">
+                                {% for Folder in Folder_list %}
+                                <li><a href="/my_admin/file_manager?Folder={{ Folder }}" style="width: 150px"><i class="fa fa-folder"></i>{{ Folder }}</a><i hidden class="show_I"><a class="btn btn-outline btn-warning" href="/my_admin/dele_Folder?Folder={{ Folder }}">删除</a></i></li>
+                               {% endfor%}
+                            </ul>
+                            <h5 class="tag-title">标签</h5>
+                            <ul class="tag-list" style="padding: 0">
+                                <li><a href="file_manager.html">爱人</a>
+                                </li>
+                                <li><a href="file_manager.html">工作</a>
+                                </li>
+                                <li><a href="file_manager.html">家庭</a>
+                                </li>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 animated fadeInRight">
+                <div class="row">
+                    <div class="col-sm-12">
+                        {% for fl in file %}
+                        <div class="file-box">
+                            <div class="file">
+                                <a class="glyphicon glyphicon-remove" href="/delete_file?fileid={{fl.Filesid}}">删除</a>
+                                    <span class="corner"></span>
+
+                                    <div class="icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        {{ fl.FileName }}
+                                        <br/>
+                                        <small>添加时间：{{ fl.datime }}</small>
+                                    </div>
+                                <a href="/download_file?fileid={{fl.Filesid }}" class="glyphicon glyphicon-arrow-down">
+                                    下载
+                                </a>
+                            </div>
+
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+
+
+
+    <!-- 自定义js -->
+    <script src="{% static 'js/content.js' %}"></script>
+      <script src="{% static 'js/plugins/dropzone/dropzone.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.file-box').each(function () {
+                animationHover(this, 'pulse');
+            });
+        });
+    </script>
+
+    <script>
+        $("#show_dele").click(
+                function () {
+                $('.show_I').toggle()
+                }
+        )
+        $('#upFolder').click(
+                function () {
+                $("#inFolder").toggle()
+                $("#buFolder").toggle()
+                }
+        )
+         $('#upFolder').click(
+                 function () {
+
+
+                 }
+         )
+        $('#colesform').click(
+                function () {
+                    location.reload('my_admin/file_manager')
+
+                }
+        )
+        $(document).ready(function () {
+
+            Dropzone.options.myAwesomeDropzone = {
+
+                autoProcessQueue: false,
+                uploadMultiple: true,
+                parallelUploads: 100,
+                maxFiles: 100,
+
+                // Dropzone settings
+                init: function () {
+                    var myDropzone = this;
+
+                    this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        myDropzone.processQueue();
+                    });
+                    this.on("sendingmultiple", function () {});
+                    this.on("successmultiple", function (files, response) {});
+                    this.on("errormultiple", function (files, response) {});
+                }
+
+            }
+
+        });
+    </script>
+    
+
+</body>
+
+</html>
+{% endblock %}

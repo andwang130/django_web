@@ -1,0 +1,37 @@
+Django运行访问项目出现的问题:DisallowedHost at / Invalid HTTP_HOST header
+setting.py 文件：
+ALLOWED_HOSTS = ['*']  ＃在这里请求的host添加了＊
+
+mysql配置:
+DATABASES = {
+ 'default': {
+ 'ENGINE': 'django.db.backends.mysql',
+  
+      'NAME': 'web',
+     
+   'USER': 'webproject',
+    
+    'PASSWORD': 'web',
+     
+   'HOST': 'localhost',
+      
+  'PORT': '3306',
+    }
+}
+
+
+mysql命令:https://www.cnblogs.com/zhangzhu/archive/2013/07/04/3172486.html
+python manage.py createsuperuser
+# Django 1.7 及以上的版本需要用以下命令
+python manage.py makemigrations my_app
+python manage.py migrate
+
+解决Django migrate No changes detected 不能创建表 ：http://blog.csdn.net/hanglinux/article/details/75645756
+
+改数据库的字符编码
+
+ALTER DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci 
+ CREATE DATABASE `test2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;创建数据库 
+ORM操作 http://blog.csdn.net/fgf00/article/details/53678205
+{% for %} 标签在循环中设置了一个特殊的 forloop 模板变量。这个变量能提供一些当前循环进展的信息：
+1. forloop.counter  ： forloop.counter总是一个表示当前循环的执行次数的整数计数器。这个计数器是从1开始的，所以在第一次循环时forloop.counter 将会被设置为1。例子如下：

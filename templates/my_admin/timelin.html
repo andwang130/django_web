@@ -1,0 +1,208 @@
+{% extends 'my_admin/admin_temp.html' %}
+{% load staticfiles %}
+{%block head %}
+<link href="{%static 'css/animate.css' %}" rel="stylesheet">
+{% endblock%}
+
+{% block mian %}
+<body class="gray-bg">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrapper wrapper-content">
+                <div class="row animated fadeInRight">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                                 <button class="btn btn-primary btn-block" id="add_but" data-toggle="modal" data-target="#myModa">添加计划</button>
+
+                            <div class="text-center float-e-margins p-md">
+                                <span>显示模式</span>
+                                <a href="#" class="btn btn-xs btn-primary" id="lightVersion">浅色</a>
+                                <a href="#" class="btn btn-xs btn-primary" id="darkVersion">深色</a>
+                                <a href="#" class="btn btn-xs btn-primary" id="leftVersion">布局切换</a>
+                            </div>
+                            <div class="" id="ibox-content">
+
+                                {% for i in plannedtask %}
+                                <div id="vertical-timeline" class="vertical-container light-timeline">
+                                    <div class="vertical-timeline-block">
+                                        <div class="vertical-timeline-icon navy-bg">
+                                            <i class="fa fa-briefcase"></i>
+                                        </div>
+
+                                        <div class="vertical-timeline-content">
+                                            <h2>{{i.title}}</h2>
+                                            <p>{{i.conten}}
+                                            </p>
+                                            <a  class="btn btn-primary btn-block"  style="width: 50px" data-toggle="modal" data-target="#myModa" name="update" value="{{ i.plandkID }}" > 修改</a>
+                                            <a href="/my_admin/deleteplan?planid={{ i.plandkID }}" class="btn btn-sm btn-primary" style="width: 50px"> 删除</a>
+                                            <span >执行间隔:{{ i.Intervals }}</span>
+                                            <span id="strattime" class="vertical-date">开始日期:{{ i.strattime }}<br>
+                                                结束日期:{{i.endtime}}
+                                        <small>提醒时间:{{i.daytime}}</small>
+                                    </span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        <div class="btn-group" style="text-align:center">
+                                <a type="button" class="btn btn-white" href="/my_admin/planviews?index={{ indeX |add:-1 }}"><i class="fa fa-chevron-left"></i>
+                                </a>
+
+                                {% for i in pages %}
+                                    {% ifequal i indeX %}
+                                      <a class="btn btn-white  active">{{ i }}</a>
+                                        {% else  %}
+                                     <a class="btn btn-white" href="/my_admin/planviews?index={{ i }}">{{ i }}</a>
+                                    {% endifequal %}
+                                    {% endfor %}
+                                <a type="button" class="btn btn-white" href="/my_admin/planviews?index={{ indeX |add:1 }}"><i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<div class="modal fade " id="myModa" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content animated flipInY">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">计划任务</h4>
+{#                                            <small class="font-bold">这里可以显示副标题。</small>#}
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" id="form1"  action="/my_admin/add_panl" >
+                                                <input name="oldID" id="oldID" hidden>
+                                                {% csrf_token %}
+                                                <div>[标题]:<input name="title" id="title"></div>
+                                                <div>[描述]:<textarea name="conten" id="conten" style="width:200px;height: 60px" maxlength="60">
+                                                </textarea>
+                                                </div>
+                                                <div>[提醒时间]:<input type="time" id="daytime" name="daytime"></div>
+                                                <div>[间隔]:</div>
+                                                <div>
+                                                <span>
+                                                    <label for="Interval2">星期1</label><input  value="1" id="Interval2" name="Interval" type="checkbox">
+                                                    <label for="Interval3">星期2</label><input  value="2" id="Interval3" name="Interval" type="checkbox">
+                                                    <label for="Interval4">星期3</label><input value="3" id="Interval4" name="Interval" type="checkbox">
+                                                    <label for="Interval5">星期4</label><input value="4" id="Interval5" name="Interval" type="checkbox">
+                                                    <label for="Interval6">星期5</label><input  value="5" id="Interval6" name="Interval" type="checkbox">
+                                                    <label for="Interval7">星期六</label><input  value="6" id="Interval7" name="Interval" type="checkbox">
+                                                    <label for="Interval8">星期天</label><input  value="0" id="Interval8" name="Interval" type="checkbox">
+                                                </span>
+                                                    </div>
+                                                <div>
+                                                    [开始时间]:<input name="statiem" id="statiem" type="date">
+                                                </div>
+                                                <div>[结束时间]<input name="endtime" id="endtime" type="date"></div>
+                                                <div><button type="submit">提交</button></div>
+                                            </form>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="colesform" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+    <script>
+        $('#add_but').click(
+                function () {
+                       $('#title').val('');
+                        $('#conten').val('');
+                        $('#daytime').val('');
+                        $('#statiem').val('');
+                        $('#endtime').val('');
+                        $('#oldID').val('');
+                       $('#form1').attr('action','/my_admin/add_panl')
+                        var inputs=document.getElementsByName('Interval')
+                          for(var inindx in inputs)
+                            {
+
+                                   inputs[inindx].checked=false
+
+                            }
+                }
+        )
+
+
+        $("a[name=update]").click(
+                function (){
+                   var oldid=$(this).attr('value');
+                    $.get('/my_admin/updateplan',{'oldid':oldid},function (data) {
+                        var data = JSON.parse(data);
+                        $('#form1').attr('action','/my_admin/updateplan')
+                        $('#title').val(data['title']);
+                        $('#conten').val(data['conten']);
+                        $('#daytime').val(data['daytime']);
+                        $('#statiem').val(data['strattime']);
+                        $('#endtime').val(data['endtime']);
+                        $('#oldID').val(oldid);
+                           var inte=data['Interval'];
+                            var inputs=document.getElementsByName('Interval')
+                        for(var indx in data['Interval']){
+
+                            for(var inindx in inputs)
+                            {
+                                if(inputs[inindx].value===inte[indx])
+                                {
+                                    console.log(inputs[inindx].value)
+                                   inputs[inindx].checked=true
+                                }
+
+                            }
+
+                        }
+                        $('#updated')
+
+                        
+                    })
+
+                }
+        )
+        $(document).ready(function () {
+
+            // Local script for demo purpose only
+            $('#lightVersion').click(function (event) {
+                event.preventDefault()
+                $('#ibox-content').removeClass('ibox-content');
+                $('#vertical-timeline').removeClass('dark-timeline');
+                $('#vertical-timeline').addClass('light-timeline');
+            });
+
+            $('#darkVersion').click(function (event) {
+                event.preventDefault()
+                $('#ibox-content').addClass('ibox-content');
+                $('#vertical-timeline').removeClass('light-timeline');
+                $('#vertical-timeline').addClass('dark-timeline');
+            });
+
+            $('#leftVersion').click(function (event) {
+                event.preventDefault()
+                $('#vertical-timeline').toggleClass('center-orientation');
+            });
+
+
+        });
+    </script>
+
+    
+    
+</body>
+
+</html>
+{% endblock%}

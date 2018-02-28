@@ -1,0 +1,129 @@
+﻿﻿{% extends "my_admin/templat.html" %}
+{% block  mian %}
+
+  <article>
+    <h2 class="about_h">您现在的位置是：<a href="/">首页</a>><a href="/newlist">所有文章</a></h2>
+    <div id="conten" class="bloglist">
+    </div>
+  <div id="page" class="page"></div>
+
+  </article>
+  <aside>
+    <div class="rnav" id="divty">
+        {% for fod in classify %}
+      <li class="rnav{{"1234"|random}}"><a href="#">{{ fod.clasname}}</a></li>
+        {% endfor %}
+    </div>
+    <div class="ph_news">
+      <h2>
+        <p>点击排行</p>
+      </h2>
+    <ul id="ajaxp" class="ph_n">
+       {% for i in Colatr %}
+              <li><span>{{forloop.counter}}</span><a href="/new/{{ i.artid }}">{{i.title}}</a></li>
+          {% endfor %}
+      </ul>
+      <h2>
+        <p>栏目推荐</p>
+      </h2>
+      <ul>
+       {% for foo in Recom %}
+         <li><a href="/new/{{ i.artid }}">{{ foo.title }}</a></li>
+       {% endfor %}
+      </ul>
+    </div>
+  </aside><script>
+var artype='all'
+    $("#divty li").click(function () {
+                artype = $(this).find('a').text()
+
+                page_ajax(1)
+            }
+    )
+
+
+    window.onload=(function(){
+        page_ajax(1)
+    })
+
+
+function page_ajax(x){
+         $.ajax(
+            {
+            url:'/newlist/',
+            type:'POST',
+            tradition:true,
+            dataType: 'json',
+            data: {
+                'page': x,
+                'csrfmiddlewaretoken': '{{ csrf_token }}',
+                'artye':artype
+            },
+                success: function (arg){
+{#                    this.remove('class');#}
+
+            var data=arg['fields'];
+                var pagelist=arg['pages'];
+                var index=arg['index'];
+{#                console.log(data[0]['fields']['title'])#}
+            console.log(data);
+            var con='';
+            $.each(data,function(index,item)
+            {
+                con+='<div class="newblog" style="width:700px"><ul>';
+                con+='<h3><a href="/new/'+item['artid']+' ">'+item['title']+'</a></h3>';
+                con+='<div class="autor"><span>'+item['author']+'</span><span>分类：[<a href="#">'+item['classify']+'</a>]</span><span>浏览（<a href="/">'+item['numcilck']+'</a>）</span></div>';
+                con+='<p>'+item['abstract']+'</p><p><a href="/new/'+item['artid']+'" target="_blank" class="readmore">全文</a>{% if usname %}<a href="/new/'+item['artid']+'" target="_blank" class="readmore">修改</a></p>{% endif %}';
+                con+='</ul><div class="dateview">'+ item['datime']+'</div></div>';
+            });
+
+            document.getElementById('conten').innerHTML=con;
+                console.log(pagelist)
+        var pages = '<a title="Total record"><b id="pagemax">' + pagelist.length + '</b>'
+        if (index>5){
+            var sta=index-2;
+            var end=index+3;
+            for (sta; sta<=end; sta++) {
+                if (sta===i){
+                    pages += '<a onclick="page_ajax('+i+')"  class="pagenu" >' + i + '</a>'
+                }
+                else {
+                    pages += '<a onclick="page_ajax(' + i + ')">' + i + '</a>'
+                }
+
+        }
+
+        }
+        else {
+            for (var sta=1; sta <=pagelist.length; sta++) {
+                if (sta===index){
+                    pages += '<a  class="pagenu" >' + index + '</a>'
+                }
+                else {
+                    pages += '<a onclick="page_ajax(' + sta + ')">' + sta + '</a>'
+                }
+
+            }
+        }
+        pages += '<a href="#">&gt;</a><a href="#">&gt;&gt;</a></div>';
+        console.log(pages);
+        document.getElementById('page').innerHTML=pages
+
+    }
+
+
+
+
+
+            }
+
+
+
+         )
+
+    }
+
+
+</script>
+  <!-- 清除浮动 -->
+{% endblock %}

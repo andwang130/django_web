@@ -1,0 +1,5 @@
+#!/bin/bash
+mysql=$(which mysql)
+$mysql myboke -uroot -pANDWANG130. -e 'select userid_id from my_app_article'
+
+

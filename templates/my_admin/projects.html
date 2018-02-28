@@ -1,0 +1,174 @@
+{% extends 'my_admin/admin_temp.html' %}
+
+{% block mian %}
+<body class="gray-bg">
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+        <div class="row">
+
+            <div class="col-sm-12">
+
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>所有项目</h5>
+                        <div class="ibox-tools">
+                            <a href="projects.html" class="btn btn-primary btn-xs" id="add_but" data-toggle="modal" data-target="#myModa">创建新项目</a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row m-b-sm m-t-sm">
+                            <div class="col-md-1">
+                                <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <input type="text" placeholder="请输入项目名称" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> 搜索</button> </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-list">
+
+                            <table class="table table-hover">
+                                <tbody>
+                                {% for por in porject %}
+                                    <tr>
+                                        <td class="project-status">
+                                            <span class="label label-primary">{% if por.degree < 100 %}进行中
+                                                {% else %}
+                                                已结束
+                                                {% endif %}
+                                        </td>
+                                        <td class="project-title">
+                                            <a href="project_detail.html">{{  por.title }}</a>
+                                            <br/>
+                                            <small>{{ por.settime }}</small>
+                                        </td>
+                                        <td class="project-completion">
+                                                <small>当前进度： {{ por.degree }}%</small>
+                                                <div class="progress progress-mini">
+                                                    <div style="width: {{ por.degree }}%;" class="progress-bar"></div>
+                                                </div>
+                                        </td>
+                                        <td class="project-actions">
+                                            <a href="/my_admin/project_detail?id={{ por.prijectpID }}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+                                            <a href="/porjcet/deleteprojects?proid={{ por.prijectpID }}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 删除 </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                     <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+            <div class="btn-group">
+                                <a type="button" class="btn btn-white" href="/my_admin/projects?page={{ page |add:-1}}"><i class="fa fa-chevron-left"></i>
+                                </a>
+                                {% for i in pages %}
+                                    {% ifequal i page %}
+                                      <a class="btn btn-white  active">{{ i }}</a>
+                                        {% else  %}
+                                     <a class="btn btn-white" href="/my_admin/projects?page={{ i }}">{{ i }}</a>
+                                    {% endifequal %}
+                                    {% endfor %}
+                                <a type="button" class="btn btn-white" href="/my_admin/projects?page={{ page |add:1}}"><i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+</div>
+        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    <div class="modal fade " id="myModa" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content animated flipInY">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">项目创建</h4>
+{#                                            <small class="font-bold">这里可以显示副标题。</small>#}
+                                        </div>
+
+
+                                                               <div class="ibox-content">
+                        <form class="form-horizontal m-t" id="commentForm" action="/my_admin/porject_add" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标题：</label>
+                                <div class="col-sm-8">
+                                    <input id="cname" name="title" minlength="2" type="text" class="form-control" required="" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">github：</label>
+                                <div class="col-sm-8">
+                                    <input id="curl" type="url" class="form-control" name="url">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">项目文档</label>
+                                <div class="col-sm-8">
+                                    <input id="curl" type="file" class="form-control" name="file">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">说明：</label>
+                                <div class="col-sm-8">
+                                    <textarea id="ccomment"  style="height: 300px" name="conten" class="form-control" required="" aria-required="true"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-3">
+                                    <button class="btn btn-primary" type="submit">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+    <script>
+        $(document).ready(function(){
+
+            $('#loading-example-btn').click(function () {
+                btn = $(this);
+                simpleLoad(btn, true)
+
+                // Ajax example
+//                $.ajax().always(function () {
+//                    simpleLoad($(this), false)
+//                });
+
+                simpleLoad(btn, false)
+            });
+        });
+
+        function simpleLoad(btn, state) {
+            if (state) {
+                btn.children().addClass('fa-spin');
+                btn.contents().last().replaceWith(" Loading");
+            } else {
+                setTimeout(function () {
+                    btn.children().removeClass('fa-spin');
+                    btn.contents().last().replaceWith(" Refresh");
+                }, 2000);
+            }
+        }
+    </script>
+
+    
+
+    </body>
+{% endblock %}

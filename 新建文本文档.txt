@@ -1,0 +1,1 @@
+﻿ pip3 install django-crontab http://pypi.douban.com/simple --trusted-host=pypi.douban.com

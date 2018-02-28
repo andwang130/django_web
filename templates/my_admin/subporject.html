@@ -1,0 +1,375 @@
+{% extends 'my_admin/admin_temp.html'%}
+{% load staticfiles %}
+{% block head %}
+
+
+   <link href="{% static 'css/plugins/dropzone/basic.css' %}" rel="stylesheet">
+    <link href="{%  static 'css/plugins/dropzone/dropzone.css' %}" rel="stylesheet">
+
+ <link href="{%static 'css/plugins/summernote/summernote.css'%}" rel="stylesheet">
+    <link href="{% static 'css/plugins/summernote/summernote-bs3.css'%}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+
+
+{% endblock %}
+{% block mian%}
+<body class="gray-bg">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="ibox">
+                    <div class="ibox-content">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="m-b-md">
+                                    <a href="#" class="btn btn-white btn-xs pull-right"  id="add_but" data-toggle="modal" data-target="#myModa1" >编辑项目</a>
+                                    <h2><a  href="/my_admin/project_detail?id={{ porject.prijectpID }}">{{ porject.title }}</a>>>><span id="title">{{subpor.subtitle}}</span></h2>
+                                </div>
+                                <dl class="dl-horizontal">
+                                    <dt>状态：</dt>
+                                    <dd><span class="label label-primary">{% if subpor.completenum < 100 %}进行中
+                                        {% else %}
+                                        已结束
+                                    {% endif %}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <dl class="dl-horizontal">
+
+
+
+                                    <dt>描述:</dt>
+                                    <dd id="describe">{{subpor.describe}}</dd>
+
+                                    </dd>
+
+                                </dl>
+                            </div>
+                            <div class="col-sm-7" id="cluster_info">
+                                <dl class="dl-horizontal">
+
+                                    <dt>最后更新：</dt>
+                                    <dd>2014年 11月7日 22:03</dd>
+                                    <dt>创建于：</dt>
+                                    <dd>{{ subpor.settime }}</dd>
+
+
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <dl class="dl-horizontal">
+                                    <dt>当前进度</dt>
+                                    <dd>
+                                          <div class="progress progress-striped active m-b-sm">
+                                 <div style="width:{{ subpor.completenum }}%;" class="progress-bar"></div>
+                                </div>
+                                         <small>当前已完成项目总进度的 <strong>{{ subpor.completenum }}%</strong></small>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row m-t-sm">
+                            <div class="col-sm-12">
+                                <div class="panel blank-panel">
+                                    <div class="panel-heading">
+                                        <div class="panel-options">
+                                            <ul class="nav nav-tabs">
+                                                <li><a href="project_detail.html#tab-1" data-toggle="tab">进程消息</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel-body">
+
+                                        <div class="tab-content">
+                                            {% for i in subpor_list %}
+                                            <div class="tab-pane active" id="tab-1">
+                                                <div class="feed-activity-list">
+                                                    <div class="feed-element">
+                                                        <a href="profile.html#" class="pull-left">
+                                                            <img alt="image" class="img-circle" src="img/a1.jpg">
+                                                        </a>
+                                                        <div class="media-body ">
+                                                <small class="pull-right text-navy">{{ i.setitme }}</small>
+                                                            <strong></strong>.
+                                                            <br>
+                                                            <small >{{ i.conten|safe }}</small>
+                                                            <div class="actions"  style="text-align: right">
+                                                                <a class="btn btn-xs btn-white" href="/my_admin/delete_porc?id={{i.ProcID}}"><i class="fa fa-times"></i> 删除 </a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="wrapper wrapper-content project-manager">
+                <h4>项目描述</h4>
+                <img src="img/wenku_logo.png" class="img-responsive">
+                <p class="small">
+                    <br>{{ subpor.describe  }}
+                </p>
+                <p class="small font-bold">
+                    <span><i class="fa fa-circle text-warning"></i> 高优先级</span>
+                </p>
+
+              
+
+
+
+
+                <h5>项目文档</h5>
+                <ul class="list-unstyled project-files">
+                    {% for file in subfile %}
+                    <li><a href=""><i class="fa fa-file"></i>{{ file.filename }}</a><a onclick="deletefile({{file.fileid}})">删除</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+
+                <div class="m-t-md">
+                    <a href="#" class="btn btn-xs btn-primary"  data-toggle="modal" data-target="#myModa">添加文档</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+  <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="ibox">
+ <div class="summernote">
+                        </div>
+                                  </div>
+
+      <div style="text-align: center" > <button class="btn btn-primary" id="add">提交</button></div>
+
+         </div>
+    </div>
+
+
+                                     <div class="modal fade" id="myModa" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content animated flipInY">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" onclick="but_coloe()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">文件上传</h4>
+{#                                            <small class="font-bold">这里可以显示副标题。</small>#}
+                                        </div>
+                                        <div class="modal-body">
+                                                   <form id="my-awesome-dropzone" id="my-awesome-dropzone" class="dropzone" action="/my_admin/upsubfile">
+
+                                                       <input hidden value="{{ subpor.SubID }}" name="suid">
+                                                       {% csrf_token %}
+                            <div class="dropzone-previews"></div>
+                            <button type="submit" class="btn btn-primary pull-right">提交</button>
+                        </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="colesform" class="btn btn-white" data-dismiss="modal" onclick="but_coloe()">关闭</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+      <div class="modal fade" id="myModa1" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content animated flipInY">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" onclick="but_coloe()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">项目编辑</h4>
+{#                                            <small class="font-bold">这里可以显示副标题。</small>#}
+                                        </div>
+                                        <div class="modal-body">
+                                                                   <form class="form-horizontal m-t" id="commentForm" action="/my_admin/update_subpoje" method="post" enctype="multipart/form-data">
+
+                                                                       <input name="id" id="id" value="{{ subpor.SubID }}" hidden>
+                                                                       {% csrf_token %}
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标题：</label>
+                                <div class="col-sm-8">
+                                    <input id="cname" value="{{ subpor.subtitle }}" name="title" minlength="2" type="text" class="form-control" required="" aria-required="true">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">描述：</label>
+                                <div class="col-sm-8">
+                                    <textarea id="ccomment"  style="height: 300px" name="conten" class="form-control" required="" aria-required="true">{{ subpor.describe }}</textarea>
+                                </div>
+                            </div>
+                                         <div class="form-group">
+                                <label class="col-sm-3 control-label">完成度：</label>
+                                <div class="col-sm-8">
+                                      <div class="m-r-md inline">
+                                <div style="display:inline;width:85px;height:85px;"><canvas width="85" height="85"></canvas><input type="text" name="num" value="{{ subpor.completenum }}" class="dial m-r" data-fgcolor="#1AB394" data-width="85" data-height="85" style="width: 46px; height: 28px; position: absolute; vertical-align: middle; margin-top: 28px; margin-left: -65px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 17px; line-height: normal; font-family: Arial; text-align: center; color: rgb(26, 179, 148); padding: 0px; -webkit-appearance: none;"></div>
+                            </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-3">
+                                    <button class="btn btn-primary" type="submit">提交</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="colose" class="btn btn-white" data-dismiss="modal" onclick="but_coloe()">关闭</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+    <script>
+        $('#add').click(
+                function () {
+
+                        $.ajax({
+                            url:'/my_admin/addporjectProc',
+                            type:'post',
+                            headers:{'X-CSRFToken':'{{ csrf_token }}'},
+                            data:{ 'id':$('#id').val(),
+                                'conten':$('.summernote').code()
+                            },
+                            success:function (arg) {
+                                $('.summernote').code('')
+                                location.reload()
+
+                            }
+                                }
+
+                        )
+
+                }
+        )
+
+     function deletefile (id) {
+         $.get('/my_admin/deletesubfile',{'id':id},function(arg){
+             if(arg=='true'){
+                 location.reload()
+             }
+         })
+
+     }
+     function but_coloe() {
+            location.reload()
+     }
+        $(document).ready(function () {
+
+
+            $('#loading-example-btn').click(function () {
+                btn = $(this);
+                simpleLoad(btn, true)
+
+                // Ajax example
+                //                $.ajax().always(function () {
+                //                    simpleLoad($(this), false)
+                //                });
+
+                simpleLoad(btn, false)
+            });
+        });
+
+        function simpleLoad(btn, state) {
+            if (state) {
+                btn.children().addClass('fa-spin');
+                btn.contents().last().replaceWith(" Loading");
+            } else {
+                setTimeout(function () {
+                    btn.children().removeClass('fa-spin');
+                    btn.contents().last().replaceWith(" Refresh");
+                }, 2000);
+            }
+        }
+            $(document).ready(function () {
+
+            Dropzone.options.myAwesomeDropzone = {
+
+                autoProcessQueue: false,
+                uploadMultiple: true,
+                parallelUploads: 100,
+                maxFiles: 100,
+
+                // Dropzone settings
+                init: function () {
+                    var myDropzone = this;
+
+                    this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        myDropzone.processQueue();
+                    });
+                    this.on("sendingmultiple", function () {});
+                    this.on("successmultiple", function (files, response) {});
+                    this.on("errormultiple", function (files, response) {});
+                }
+
+            }
+
+        });
+    </script>
+
+
+         <script src="{% static 'js/plugins/summernote/summernote.min.js' %}"></script>
+    <script src="{%  static 'js/plugins/summernote/summernote-zh-CN.js' %}"></script>
+      <script src="{% static 'js/plugins/dropzone/dropzone.js' %}"></script>
+<script src="{% static 'js/plugins/jsKnob/jquery.knob.js' %}"></script>
+<script src="{% static 'js/plugins/chosen/chosen.jquery.js' %}"></script>
+    <script src="{% static 'js/plugins/ionRangeSlider/ion.rangeSlider.min.js' %}"></script>
+
+
+        <script src="{% static 'js/content.js' %}"></script>
+
+ <script>
+        $(document).ready(function () {
+
+            $('.summernote').summernote({
+                lang: 'zh-CN'
+            });
+
+        });
+        var edit = function () {
+            $("#eg").addClass("no-padding");
+            $('.click2edit').summernote({
+                lang: 'zh-CN',
+                focus: true
+            });
+        };
+        var save = function () {
+            $("#eg").removeClass("no-padding");
+            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+            $('.click2edit').destroy();
+        };
+    </script>
+         <script src="{% static 'js/demo/form-advanced-demo.js' %}"></script>
+
+</body>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends "my_admin/templat.html" %}
+{% load staticfiles %}
+{% block mian %}
+    <link rel="stylesheet" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+<link href="{% static 'dist/summernote.css' %}" rel="stylesheet"/>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+<script src="{% static 'dist/summernote.js' %}"></script>
+<script src="{% static 'dist/lang/summernote-zh-CN.js' %}"></script>
+    <article>
+    <ul>
+    <li>
+<br>
+       <label>标题</label> <input type="text" style="width: 400px" id="title" >
+        <br>
+        <br>
+    </li>
+        <li>
+    <div class="summernote">
+    </div>
+    </li>
+        <li>
+            <br>
+            【分类】<select id="classify"  style="width: 200px">
+                {% for foo in class %}
+                    <option value="0">{{ foo.clasname }}</option>
+                {% endfor %}
+
+</select>
+            <br>
+        </li>
+        <li>
+            <p><label>封面</label><input type="file" id="file"></p>
+        </li>
+
+        <li style="text-align: center">
+            <button id='but'> 提交</button>
+        </li>
+        </ul>
+        </article>
+<aside>
+    <div class="avatar"><a href="about.html"><span>关于我</span></a></div>
+    <div class="topspaceinfo">
+      <h1>执子之手，与子偕老</h1>
+      <p>于千万人之中，我遇见了我所遇见的人....</p>
+    </div>
+    <div class="about_c">
+       <p>网名：列子御风 | 红叶知秋</p>
+      <p>职业：python </p>
+      <p>籍贯：江西</p>
+      <p>邮箱：627656470@qq.com</p>
+    </div>
+    <div class="bdsharebuttonbox"><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_more" data-cmd="more"></a></div>
+    <div class="tj_news">
+      <h2>
+        <p class="tj_t1">最新文章</p>
+      </h2>
+      <ul>
+        <li><a href="/">{{newsart.title}}</a></li>
+      </ul>
+      <h2>
+        <p class="tj_t2">推荐文章</p>
+      </h2>
+      <ul>
+
+        <li><a href="/">{{ maxcilck.title}}</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <h2>
+        <p>友情链接</p>
+      </h2>
+      <ul>
+        <li><a href="/">杨青个人博客</a></li>
+        <li><a href="/">3DST技术社区</a></li>
+      </ul>
+    </div>
+    <div class="copyright">
+      <ul>
+        <p> Design by <a href="/">DanceSmile</a></p>
+        <p>蜀ICP备11002373号-1</p>
+        </p>
+      </ul>
+    </div>
+  </aside>
+    <script>
+    document.getElementById('but').onclick=function () {
+        formdata=new FormData();
+        var title=$('#title').val();
+        var conten=$('.summernote').summernote('code');
+        var file=$('#file')[0].files[0];
+        var classify=$('#classify').find("option:selected").text();
+        formdata.append('title',title);
+        formdata.append('conten',conten);
+        formdata.append('file',file);
+        formdata.append('classify',classify);
+        console.log(conten,file);
+        $.ajax(
+                {
+                    url:'add_Article',
+                    type:'POST',
+                    datatype:'text',
+                    headers:{'X-CSRFToken':'{{ csrf_token }}'},
+                    processData:false,
+                    contentType:false,
+
+                    data:formdata,
+                    success:function (arg) {
+                        alert(arg)
+
+                    }
+                }
+        )
+
+    }
+    $(function(){
+ $('.summernote').summernote({
+        height: 400,
+        tabsize: 2,
+        lang: 'zh-CN'
+    });
+})
+
+    </script>
+{% endblock %}

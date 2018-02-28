@@ -1,0 +1,414 @@
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 22:52:35 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+bind(): Cannot assign requested address [core/socket.c line 769]
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 22:52:37 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+bind(): Cannot assign requested address [core/socket.c line 769]
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 22:52:38 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+bind(): Cannot assign requested address [core/socket.c line 769]
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 22:52:39 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+bind(): Cannot assign requested address [core/socket.c line 769]
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 22:52:40 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+bind(): Cannot assign requested address [core/socket.c line 769]
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 22:52:40 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+bind(): Cannot assign requested address [core/socket.c line 769]
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 22:54:15 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+bind(): Cannot assign requested address [core/socket.c line 769]
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 22:59:12 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 127.0.0.1:8000 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:37760 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.3 (default, Jan 18 2018, 23:38:00)  [GCC 4.8.2]
+Python main interpreter initialized at 0x22e5df0
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+failed to open python file /mydjango/wsgi.py
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 28013)
+spawned uWSGI worker 1 (pid: 28014, cores: 2)
+spawned uWSGI worker 2 (pid: 28015, cores: 2)
+spawned uWSGI worker 3 (pid: 28016, cores: 2)
+spawned uWSGI worker 4 (pid: 28017, cores: 2)
+spawned uWSGI http 1 (pid: 28018)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 22:59:13 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+gateway "uWSGI http 1" has been buried (pid: 28018)
+...brutally killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/wangjing/mydjango
+closing all non-uwsgi socket fds > 2 (max_fd = 65535)...
+found fd 3 mapped to socket 0 (127.0.0.1:37760)
+running /usr/local/bin/uwsgi
+[uWSGI] getting INI configuration from uwsgi.ini
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 23:03:18 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 127.0.0.1:8000 fd 5
+uwsgi socket 0 bound to TCP address 127.0.0.1:50135 (port auto-assigned) fd 4
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.3 (default, Jan 18 2018, 23:38:00)  [GCC 4.8.2]
+Python main interpreter initialized at 0x1213d10
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+failed to open python file /mydjango/wsgi.py
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 28013)
+spawned uWSGI worker 1 (pid: 28056, cores: 2)
+spawned uWSGI worker 2 (pid: 28057, cores: 2)
+spawned uWSGI worker 3 (pid: 28058, cores: 2)
+spawned uWSGI worker 4 (pid: 28059, cores: 2)
+spawned uWSGI http 1 (pid: 28060)
+gateway "uWSGI http 1" has been buried (pid: 28060)
+...brutally killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/wangjing/mydjango
+closing all non-uwsgi socket fds > 2 (max_fd = 65535)...
+found fd 4 mapped to socket 0 (127.0.0.1:50135)
+running /usr/local/bin/uwsgi
+[uWSGI] getting INI configuration from uwsgi.ini
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 23:03:30 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 127.0.0.1:8000 fd 5
+uwsgi socket 0 bound to TCP address 127.0.0.1:38869 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.3 (default, Jan 18 2018, 23:38:00)  [GCC 4.8.2]
+Python main interpreter initialized at 0x1fb1d10
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+failed to open python file /mydjango/wsgi.py
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 28013)
+spawned uWSGI worker 1 (pid: 28069, cores: 2)
+spawned uWSGI worker 2 (pid: 28070, cores: 2)
+spawned uWSGI worker 3 (pid: 28071, cores: 2)
+spawned uWSGI worker 4 (pid: 28072, cores: 2)
+spawned uWSGI http 1 (pid: 28073)
+Wed Feb 28 23:05:01 2018 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Wed Feb 28 23:05:01 2018 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Wed Feb 28 23:05:01 2018 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Wed Feb 28 23:05:01 2018 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Wed Feb 28 23:05:01 2018 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Wed Feb 28 23:05:01 2018 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Wed Feb 28 23:05:01 2018 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Wed Feb 28 23:05:01 2018 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 23:05:59 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+bind(): Cannot assign requested address [core/socket.c line 769]
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 23:07:33 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+bind(): Cannot assign requested address [core/socket.c line 769]
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Feb 28 23:08:41 2018] ***
+compiled with version: 4.8.2 on 28 February 2018 13:33:31
+os: Linux-3.13.0-65-generic #106-Ubuntu SMP Fri Oct 2 22:08:27 UTC 2015
+nodename: iZuf66ydyeiufqd6ni261oZ
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/wangjing/mydjango
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/wangjing/mydjango
+your processes number limit is 15845
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 127.0.0.1:80 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:47829 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.3 (default, Jan 18 2018, 23:38:00)  [GCC 4.8.2]
+Python main interpreter initialized at 0x1eeadf0
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+failed to open python file /mydjango/wsgi.py
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 28227)
+spawned uWSGI worker 1 (pid: 28228, cores: 2)
+spawned uWSGI worker 2 (pid: 28229, cores: 2)
+spawned uWSGI worker 3 (pid: 28230, cores: 2)
+spawned uWSGI worker 4 (pid: 28231, cores: 2)
+spawned uWSGI http 1 (pid: 28232)
+SIGINT/SIGQUIT received...killing workers...
+gateway "uWSGI http 1" has been buried (pid: 28232)
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+goodbye to uWSGI.

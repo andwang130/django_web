@@ -1,0 +1,111 @@
+﻿
+{% extends "my_admin/templat.html" %}
+{% block mian %}
+ {% load staticfiles %}
+<script>
+    $(document).ready(function(){
+        $('.flip').click(function(){
+            console.log($(this))
+            $(this).parent().siblings('.pan1').slideToggle('slow')
+        })
+    })
+</script>
+    <style>
+        .flip{
+             float: top;
+    width: 0;
+    height: 0;
+    border: 4px solid transparent ;
+    border-top-color:#B0B0B0 ;
+
+            float: right;
+        }
+    </style>
+  <article>
+    <div class="banner">
+      <ul class="texts">
+        <p>The best life is use of willing attitude,a happy-go-lucky life. </p>
+        <p>最好的生活是用心甘情愿的态度，过随遇而安的生活。</p>
+      </ul>
+    </div>
+    <div class="bloglist">
+      <h2>
+        <p><span>推荐</span>文章</p>
+      </h2>
+        {% for i in atr %}
+      <div class="blogs">
+        <h3><a href="/new/{{ i.artid }}" >{{ i.title }}</a><a class="flip"></a></h3>
+          <div class="pan1">
+              {% if i.coverimgs  %}
+        <figure><img src="{{ i.coverimgs }}" ></figure>
+                  {% else %}
+                  <figure><img src="media/69b1fa39e66f2630b37133d0119d76a2.jpg" ></figure>
+              {% endif %}
+        <ul>
+            {{i.abstract}}
+          </p>
+          <a href="/new/{{ i.artid }}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+        </ul>
+              </div>
+        <p class="autor"><span>作者：{{ i.author }}</span><span>分类：【<a href="/">{{ i.classify }}</a>】</span><span>浏览（<a href="/">{{ i.numcilck }}</a>）</span><span>评论（<a href="/">30</a>）</span></p>
+        <div class="dateview">{{ i.datime }}</div>
+      </div>
+
+  {% endfor %}
+     </div>
+  </article>
+  <aside>
+    <div class="avatar"><a href="about.html"><span>关于我</span></a></div>
+    <div class="topspaceinfo">
+      <h1>执子之手，与子偕老</h1>
+      <p>于千万人之中，我遇见了我所遇见的人....</p>
+    </div>
+{#      {% if usname %}#}
+          <div class="about_c">
+       <p>用户:{{usname}}</p>
+      <p>职业：python </p>
+      <p>籍贯:</p>
+      <p>邮箱：627656470@qq.com</p>
+    </div>
+{#          {% else %}#}
+{#           <div class="copyright">#}
+{#       <p>未登录<p>#}
+{#           <p><a href="/login">   登录</a></p>#}
+{#           <p><a href="/register">  注册</a></p>#}
+{#    </div>#}
+{#      {% endif %}#}
+    <div class="bdsharebuttonbox"><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_more" data-cmd="more"></a></div>
+    <div class="tj_news">
+      <h2>
+        <p class="tj_t1">最新文章</p>
+      </h2>
+      <ul>
+        <li><a href="new/{{ newsart.artid }}">{{newsart.title}}</a></li>
+      </ul>
+      <h2>
+        <p class="tj_t2">推荐文章</p>
+      </h2>
+      <ul>
+
+        <li><a href="/">{{ maxcilck.title}}</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <h2>
+        <p>友情链接</p>
+      </h2>
+      <ul>
+
+        <li><a href="/"></a></li>
+      </ul>
+    </div>
+    <div class="copyright">
+      <ul>
+        <p> Design by <a href="/">DanceSmile</a></p>
+        <p>蜀ICP备11002373号-1</p>
+        </p>
+      </ul>
+    </div>
+  </aside>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% load staticfiles %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="此代码内容为超萌的猫头鹰登录界面" />
+<title>注册</title>
+<link rel="stylesheet" href="{% static 'css/jq22.css'%}">
+</head>
+<body>
+<!-- begin -->
+<div id="login">
+    <div class="wrapper">
+        <div class="login">
+            <form action="#" method="post" class="container offset1 loginform" onsubmit="return validateForm()">
+                <div id="owl-login">
+                    <div class="hand"></div>
+                    <div class="hand hand-r"></div>
+                    <div class="arms">
+                        <div class="arm"></div>
+                        <div class="arm arm-r"></div>
+                    </div>
+                </div>
+                <div class="pad">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="text" class="control-label">账号</label>
+                            <input id="usname" type="text" name="usname" tabindex="1" autofocus="autofocus" class="form-control input-medium">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="password" class="control-label">密码</label>
+                            <input id="password" type="password" name="password"  tabindex="2" class="form-control input-medium">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="password1" class="control-label">密码</label>
+                            <input id="password1" type="password"  name="password"  tabindex="2" class="form-control input-medium">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-actions">
+                    <button type="submit" tabindex="4" class="btn btn-primary">注册</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script>
+        function validateForm(){
+            if($('#usname').val().length>18||$('#usname').val()==''){
+                alert('账号长度不能超过18位，不能为空')
+                 return false
+            }
+            if($('#password').val().length<6|| $('#password').val().length>18){
+                alert('密码不能低于6位,不能大于18位')
+                return false
+            }
+            if($('#password').val()!=$('#password1').val()){
+                alert('两次密码不一致')
+                return false
+            }
+        }
+    $(function() {
+        {% if repon %}
+            alert("{{repon}}")
+        {% endif %}
+        $('#login #password').focus(function() {
+            $('#owl-login').addClass('password');
+        }).blur(function() {
+            $('#owl-login').removeClass('password');
+        });
+
+    });
+    </script>
+</div>
+<!-- end -->
+</body>
+</html>

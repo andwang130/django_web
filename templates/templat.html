@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+  {% load staticfiles %}
+<title>红叶知秋的博客</title>
+<meta name="keywords" content="红叶知秋的博客" />
+<meta name="description" content="红叶知秋的博客" />
+<link href="{% static 'css/base.css'%}" rel="stylesheet">
+<link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/about.css'%}" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<link href="{% static 'css/media.css' %}" rel="stylesheet">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<!--[if lt IE 9]>
+<script src="{%  static 'js/modernizr.js'%}"></script>
+<![endif]-->
+</head>
+<body>
+<div class="ibody">
+  <header>
+    <h1>如影随形</h1>
+    <h2>影子是一个会撒谎的精灵，它在虚空中流浪和等待被发现之间;在存在与不存在之间....</h2>
+    <div class="logo"><a href="/"></a></div>
+    <nav id="topnav"><a href="/">首页</a>
+        <a href="/about/">关于我</a>
+        <a href="/newlist/">所有文章</a>
+        <a href="/share/">图片分享</a>
+        <a href="/new/">代理IP</a></nav>
+  </header>
+{% block mian %}
+{% endblock %}
+<script src="{% static 'js/silder.js' %}"></script>
+  <div class="clear"></div>
+  <!-- 清除浮动 -->
+
+</div>
+</body>
+</html>

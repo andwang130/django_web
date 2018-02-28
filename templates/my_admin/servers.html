@@ -1,0 +1,72 @@
+{% extends 'my_admin/admin_temp.html' %}
+{%block mian%}
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>服务器信息</h5>
+                <div class="ibox-tools">
+                    <button class="fa fa-check" id="addserver" data-toggle="modal" data-target="#myModa">新增一个服务器</button>
+                </div>
+            </div>
+<div class="ibox-content">
+    {% for server in servers %}
+
+                        <div class="well">
+                            <h3>
+                                {{ server.servername }}
+                            </h3>
+                            <div class="col-sm-6">
+                            {{ server.describe }}
+                                </div>
+                            <div class="col-sm-4">
+                                  {% if server.sertype == 'index' %}
+                                      首页展示
+                            {% endif %}
+                            </div>
+
+                              <div class="col-sm-2" style="text-align: center">
+                        <a href="/server_info/servers_info_conten?serverid={{server.serverid}}">查看</a>
+                                   <a  href="/server_info/deleteserver?serverid={{ server.serverid }}">删除</a>
+                                  <a href="/server_info/setindex?serverid={{ server.serverid  }}"> 设置首页展示</a>
+                                  </div>
+                        </div>
+
+
+
+    {% endfor %}
+
+
+                    </div>
+            </div>
+        </div>
+    </div>
+<div class="modal fade " id="myModa" tabindex="-1" role="dialog" aria-hidden="true">
+     <div class="modal-dialog">
+                                    <div class="modal-content animated flipInY">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">服务器新增</h4>
+{#                                            <small class="font-bold">这里可以显示副标题。</small>#}
+                                        </div>
+     <div class="ibox-content">
+
+                        <form class="form-horizontal m-t" id="commentForm" action="/server_info/download_server" method="get" enctype="multipart/form-data">
+                            <div class="row">
+                                <label>[服务器名称：]</label><input id="servername" name="servername">
+                            </div>
+                            <div class="row">
+                                <label>[添加一个描述]</label><input id="describe" name="describe">
+                            </div>
+                            <div class="row">
+                                <button type="submit">提交</button>
+                            </div>
+                            <div>提交信息之后会下载一个py文件，该文件运行到服务器上，可监控服务器状态</div>
+                        </form>
+                    </div>
+</div>
+
+</div>
+    </body>
+    </html>
+{% endblock %}

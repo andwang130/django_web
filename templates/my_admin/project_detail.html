@@ -1,0 +1,298 @@
+{% extends 'my_admin/my_admin.html' %}
+{% block mian %}
+<body class="gray-bg">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="ibox">
+                    <div class="ibox-content">
+                               <div class="row">
+                            <div class="col-sm-12">
+                                <div class="m-b-md">
+                                    <a href="#" class="btn btn-white btn-xs pull-right"  id="upde" >编辑项目</a>
+
+                                </div>
+                                <dl class="dl-horizontal">
+                                    <dt>项目名称：</dt>
+                                    <dd>
+
+                                 <h2 id="title">{{ project.title }}</h2>
+                                        <input id="id" value="{{project.prijectpID}}" hidden>
+
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <dl class="dl-horizontal">
+                                    <dt>状态：</dt>
+                                    <dd><span class="label label-primary">{% if project.degree < 100 %}进行中
+                                        {% else %}
+                                        已结束
+                                    {% endif %}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                                <dl class="dl-horizontal">
+
+                                    <dt>描述：</dt>
+                                    <dd id="conten">{{ project.conten  }}</dd>
+
+
+                                </dl>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <dl class="dl-horizontal">
+                              <dt>github：</dt>
+                                    <dd id="github"><a href="project_detail.html#" class="text-navy">{{ project.urlgithub }}</a>
+                                    </dd>
+                                    </dl>
+                            </div>
+                            <div class="col-sm-7" id="cluster_info">
+                                <dl class="dl-horizontal">
+
+                                    <dt>最后更新：</dt>
+                                    <dd>2014年 11月7日 22:03</dd>
+                                    <dt>创建于：</dt>
+                                    <dd>{{ project.settime }}</dd>
+
+
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                              <div class="col-sm-5">
+                                  <dl class="dl-horizontal">
+                                 <dt><h5>开发文档</h5></dt>
+                                      <dd>
+                <ul class="list-unstyled project-files">
+
+                    {% for file in profile %}
+                    <li><a href="#"><i class="fa fa-file"></i>{{ file.filename }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                                      </dd>
+                                  </dl>
+                        </div>
+                        </div>
+                        <div class="row">
+                             <div class="col-sm-5">
+                                 </div>
+
+                            <div class="col-sm-7">
+                                <dl class="dl-horizontal">
+
+                                    <dt><button id="update" hidden>提交</button></dt>
+
+
+
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <dl class="dl-horizontal">
+                                    <dt>当前进度</dt>
+                                    <dd>
+                                          <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>状态</th>
+                                                            <th>标题</th>
+                                                            <th>创建时间</th>
+                                                            <th>进度</th>
+                                                            <th>操作</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for sub in subpor %}
+                                                        <p>
+                                                            <td>
+                                                                <span class="label label-primary"><i class="fa fa-check"></i> {{ sub.cltype }}</span>
+                                                            </td>
+                                                            <td>
+                                                               {{ sub.subtitle }}
+                                                            </td>
+                                                            <td>
+                                                                {{ sub.settime }}
+                                                            </td>
+                                                            <td>
+                                                                <div class="progress progress-striped active m-b-sm">
+                                                                   <div style="width:{{ sub.completenum }}%;" class="progress-bar"> <p>{{sub.completenum}}%</p>
+                                                                    </div>
+                                                                </div>
+
+                                                            </td>
+
+                                                            <td>
+                                                                <p class="small">
+                                                                    <a href="/my_admin/subdetail?id={{ sub.SubID }}" class="btn btn-white btn-sm">详情</a>
+                                                                    <a href="/my_admin/subdelete?id={{sub.SubID }}" class="btn btn-white btn-sm">删除</a>
+                                                                </p>
+                                                            </td>
+
+                                                        </tr>
+                                                    {% endfor %}
+
+                                                    </tbody>
+                                                </table>
+                                        <small>当前已完成项目总进度的 <strong>{{ project.degree }}%</strong><a href="project_detail.html#" class="btn btn-white btn-xs pull-right"  id="add_but" data-toggle="modal" data-target="#myModa">添加子项目</a></small>
+
+                                    </dd>
+                                </dl>
+                            </div>
+                </div>
+                        </div>
+                    </div>
+
+                </div>
+
+    </div>
+
+
+            <div class="modal fade " id="myModa" tabindex="-1" role="dialog" aria-hidden="true" >
+                                <div class="modal-dialog">
+                                    <div class="modal-content animated flipInY">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">子项目创建</h4>
+{#                                            <small class="font-bold">这里可以显示副标题。</small>#}
+                                        </div>
+
+
+                                                               <div class="ibox-content">
+                        <form class="form-horizontal m-t" id="commentForm" action="/my_admin/sub_add" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input hidden value="{{  project.prijectpID}}" name="planid">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <a class="btn btn-primary btn-block" id="add_sub">+</a>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-3">
+                                    <button class="btn btn-primary" type="submit">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+    <script>
+        $('#')
+        $('#update').click(function () {
+            $.ajax({
+                url:'/my_admin/porject_update',
+                headers:{'X-CSRFToken':'{{ csrf_token}}'},
+                type:'POST',
+                data:{
+                    'id':$('#id').val(),
+                    'title':$('#text_title').val(),
+                    'conten':$('#text_conten').val(),
+                    'github':$('#text_github').val()
+                },
+                success:function (arg) {
+                    location.reload()
+
+                }
+            })
+
+
+        })
+        $('#upde').click(function () {
+           if($('#upde').text()=='编辑项目'){
+               opens()
+           }else {
+
+               coloes()
+           }
+
+
+        })
+        function opens() {
+              conten_html='<textarea id="text_conten" style="margin: 0px; width: 334px; height: 99px;" value="'+$('#conten').text()+'">'+$('#conten').text()+'</textarea>'
+            $('#conten').html(conten_html)
+            title=$('#title')
+            title_text=title.text()
+            title_html='<input type="text" id="text_title" value="'+title_text+'">'
+            title.html(title_html)
+            github=$('#github')
+            github_text=github.text()
+            github_html='<input type="text" id="text_github" value="'+github_text+'">'
+            github.html(github_html)
+            $('#upde').text('取消编辑')
+            $('#update').removeAttr('hidden')
+        }
+        function coloes() {
+            conten_html=$('#text_conten').text()
+            $('#conten').html(conten_html)
+             $('#title').html($('#text_title').val())
+            $('#github').html('<a>'+$('#text_github').val()+'</a>')
+
+            $('#upde').text('编辑项目')
+            $('#update').attr('hidden','hidden')
+
+
+
+        }
+
+        $(document).ready(function () {
+            $('#add_sub').click(function () {
+                html='<div class="form-group"><label class="col-sm-2">子项目<font color="red">*</font></label><div class="col-sm-10"> <input id="cname" name="title" minlength="2" type="text" class="form-control" required="" aria-required="true"> </div>'
+                $('#commentForm').prepend(html)
+
+            })
+
+            $('#loading-example-btn').click(function () {
+                btn = $(this);
+                simpleLoad(btn, true)
+
+                // Ajax example
+                //                $.ajax().always(function () {
+                //                    simpleLoad($(this), false)
+                //                });
+
+                simpleLoad(btn, false)
+            });
+        });
+
+        function simpleLoad(btn, state) {
+            if (state) {
+                btn.children().addClass('fa-spin');
+                btn.contents().last().replaceWith(" Loading");
+            } else {
+                setTimeout(function () {
+                    btn.children().removeClass('fa-spin');
+                    btn.contents().last().replaceWith(" Refresh");
+                }, 2000);
+            }
+        }
+    </script>
+
+    
+    
+
+</body>
+
+{% endblock %}

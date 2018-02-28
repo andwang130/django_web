@@ -1,0 +1,188 @@
+{% extends 'my_admin/admin_temp.html' %}
+{% load staticfiles %}
+{% block head %}
+        <link href="{% static 'css/plugins/summernote/summernote.css' %}" rel="stylesheet">
+    <link href="{%  static 'css/plugins/summernote/summernote-bs3.css' %}" rel="stylesheet">
+    <link href="{%  static 'css/plugins/sweetalert/sweetalert.css' %}" rel="stylesheet">
+{% endblock %}
+{% block mian %}
+<body class="gray-bg">
+
+    <div class="wrapper wrapper-content">
+
+
+<div class="row">
+       <label>标题</label> <input type="text" style="width: 400px" id="title" >
+        <br>
+        <br>
+</div>
+
+
+   <div class="row">
+            <div class="col-sm-12" >
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>内容</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_editors.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="form_editors.html#">选项1</a>
+                                </li>
+                                <li><a href="form_editors.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content no-padding">
+
+                        <div class="summernote">
+                            <h2>输入内容</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <div class="row">
+            【分类】<select id="classify"  style="width: 200px">
+                {% for foo in class %}
+                    <option value="0">{{ foo.clasname }}</option>
+                {% endfor %}
+
+</select>
+          </div>
+
+
+       <div class="row">
+            <p><label>封面</label><input type="file" id="file" onchange="checkImgType(this)"></p>
+               <script>
+                function checkImgType(file) {
+                    if(file.value==''){
+                              swal({
+                   title: "提示框",
+                   text: "请选择图片"
+               })}
+                        else  if(!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(file.value))
+                    {
+                                         swal({
+                   title: "提示框",
+                   text: "图片类型必须是.gif,jpeg,jpg,png中的一种",
+               });       $('#file').val('')
+                        return false
+                    }
+
+
+                }
+            </script>
+      </div>
+
+        <div  class="row" style="text-align: center">
+            <button id='but'> 提交</button>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-content">
+
+                        <h2>
+                                说明
+                            </h2>
+                        <p>
+                            用于提交文章内容
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+
+
+
+      <!-- 自定义js -->
+    <script src="{% static 'js/content.js' %}"></script>
+
+
+    <!-- SUMMERNOTE -->
+    <script src="{% static 'js/plugins/summernote/summernote.min.js' %}"></script>
+    <script src="{% static 'js/plugins/summernote/summernote-zh-CN.js' %}"></script>
+      <!-- Sweet alert -->
+    <script src="{% static 'js/plugins/sweetalert/sweetalert.min.js' %}"></script>
+
+
+  <script>
+    document.getElementById('but').onclick=function () {
+        formdata=new FormData();
+        var title=$('#title').val();
+        var conten=$('.summernote').code();
+        var file=$('#file')[0].files[0];
+        var classify=$('#classify').find("option:selected").text();
+        formdata.append('title',title);
+        formdata.append('conten',conten);
+        formdata.append('file',file);
+        formdata.append('classify',classify);
+        console.log(conten,file);
+        $.ajax(
+                {
+                    url:'/my_admin/add_Article',
+                    type:'POST',
+                    datatype:'text',
+                    headers:{'X-CSRFToken':'{{ csrf_token }}'},
+                    processData:false,
+                    contentType:false,
+                    data:formdata,
+                    success:function (arg) {
+                          swal({
+                   title: "提示框",
+                   text: "提交成功"
+               });
+
+                    }
+                }
+        )
+
+    }
+    </script>
+   <script>
+        $(document).ready(function () {
+
+            $('.summernote').summernote({
+                lang: 'zh-CN',
+                 height: 400,
+            });
+
+        });
+        var edit = function () {
+            $("#eg").addClass("no-padding");
+            $('.click2edit').summernote({
+                lang: 'zh-CN',
+                focus: true
+            });
+        };
+        var save = function () {
+            $("#eg").removeClass("no-padding");
+            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+            $('.click2edit').destroy();
+        };
+    </script>
+    
+    
+</body>
+
+</html>
+{% endblock %}
